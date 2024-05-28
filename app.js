@@ -1,38 +1,6 @@
 
 $(document).ready(function () {
-    if (localStorage.getItem("tlbb-tools-nav") && localStorage.getItem("tlbb-tools-nav").indexOf("equip") > -1) {
-        $("#equipnav").click();
-    }
-
-    if (localStorage.getItem("tlbb-tools-nav") && localStorage.getItem("tlbb-tools-nav").indexOf("segval") > -1) {
-        $("#segvalnav").click();
-    }
-    if (localStorage.getItem("tlbb-tools-nav") && localStorage.getItem("tlbb-tools-nav").indexOf("cpeq") > -1) {
-        $("#cpequipnav").click();
-    }
-    if (localStorage.getItem("tlbb-tools-nav") && localStorage.getItem("tlbb-tools-nav").indexOf("xmldrag") > -1) {
-        $("#xmldragnav").click();
-    }
-    if (localStorage.getItem("tlbb-tools-nav") && localStorage.getItem("tlbb-tools-nav").indexOf("about") > -1) {
-        $("#aboutnav").click();
-    }
-    if (localStorage.getItem("tlbb-tools-nav") && localStorage.getItem("tlbb-tools-nav").indexOf("cnextract") > -1) {
-        $("#cnextractnav").click();
-    }
-    if (localStorage.getItem("tlbb-tools-nav") && localStorage.getItem("tlbb-tools-nav").indexOf("mapextract") > -1) {
-        $("#mapextractnav").click();
-    }
-    if (localStorage.getItem("tlbb-tools-nav") && localStorage.getItem("tlbb-tools-nav").indexOf("itemextract") > -1) {
-        $("#itemextractnav").click();
-    }
-    if (localStorage.getItem("tlbb-tools-nav") && localStorage.getItem("tlbb-tools-nav").indexOf("mergeall") > -1) {
-        $("#mergeallnav").click();
-    }
-    if (localStorage.getItem("tlbb-tools-nav") && localStorage.getItem("tlbb-tools-nav").indexOf("deldup") > -1) {
-        $("#deldupnav").click();
-    }
-
-
+   
     //setup before functions
     var typingTimer; //timer identifier
     var doneTypingInterval = 700; //time in ms, 5 seconds for example
