@@ -1,6 +1,11 @@
 
+body {
+    display: flex;
+    justify-content: center;
+}
+
 .content {
-    width: 100%;
+    width: 1280px;
     padding: 30px;
 }
 
@@ -178,6 +183,6 @@ li.nav-item {
 }
 
 textarea.form-control {
-    height: auto;
+    height: 125px;
     resize: inherit;
 }
