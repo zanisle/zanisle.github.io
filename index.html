@@ -27,11 +27,11 @@
             </li>
         </ul>
         <div class="target translator">
-            <div class="dichText" style="height: 65px;justify-content: center;align-items: center;display: flex;">
-                <div style="width: 45%;">
+            <div class="dichText">
+                <div class="dichText01">
                     <textarea class="form-control" id="dichTextInput"> </textarea>
                 </div>
-                <div style="width: 10%;display: flex;justify-content: center;padding-left: 2%;flex-flow: column;">
+                <div class="dichText02">
                     <div>
                         <span>VISCII</span>
                         <input id="viscii" type="checkbox" checked="checked"
@@ -43,9 +43,14 @@
                             style="margin-left: 5px; margin-top: -1px;" />
                     </div>
                 </div>
-                <div style="width: 45%;">
+                <div class="dichText03">
                     <textarea class="form-control" id="dichTextOutput"></textarea>
                 </div>
+            </div>
+            <hr>
+            <div class="dichFile">
+                <input id="inputFile" type="file"/>
+                <button class="btn btn-success">Dịch File</button>
             </div>
             <hr>
             <div class="translateOption">
