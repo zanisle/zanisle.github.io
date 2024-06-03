@@ -19,7 +19,7 @@ $(document).ready(function () {
 
     //user is "finished typing," do something
     function doneTyping() {
-
+        translateText();
     }
     $(".nav-item").click(function () {
         $(".nav-item .nav-link").removeClass("active");
