@@ -26,7 +26,6 @@ $(document).ready(function () {
         $($(this).find(".nav-link")).addClass("active");
         $(".target").hide();
         $("." + $($(this).find(".nav-link")).attr("target")).show();
-        localStorage.setItem("tlbb-tools-nav", $($(this).find(".nav-link")).attr("target"));
     });
 
     $("#dichFile").on("click", function () {
