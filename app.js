@@ -42,7 +42,7 @@ $(document).ready(function () {
             } else {
                 var formData = new FormData();
                 formData.append('file', file);
-                formData.append('comment',  $("#translateComment").prop("checked"));
+                formData.append('comment', $("#translateComment").prop("checked"));
                 formData.append('inputCharset', $("#inputEncode").val());
                 formData.append('outputCharset', $("#outputEncode").val());
                 invokeReCaptcha((token) => {
@@ -56,7 +56,7 @@ $(document).ready(function () {
                         processData: false,
                         contentType: false,
                         success: function (response) {
-                            var blob = new Blob([response]);
+                            var blob = new Blob([response], { type: 'text/plain; charset=' + $("#outputEncode").val() });
                             var blobURL = URL.createObjectURL(blob);
                             var a = document.createElement('a');
                             a.href = blobURL;
