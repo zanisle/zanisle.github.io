@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-   
+
     //setup before functions
     var typingTimer; //timer identifier
     var doneTypingInterval = 700; //time in ms, 5 seconds for example
@@ -29,3 +29,26 @@ $(document).ready(function () {
         localStorage.setItem("tlbb-tools-nav", $($(this).find(".nav-link")).attr("target"));
     });
 });
+
+function translateText() {
+    invokeReCaptcha((token) => {
+        $.ajax({
+            url: "http://103.142.139.40/api/translate/text?text=" + $("#dichTextInput").val() + "&vietphrase="+$("#vietphrase").prop("checked")+"&viscii="+$("#viscii").prop("checked"),
+            type: "get",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-Recaptcha-Token', token);
+            },
+            success: function (result) {
+               $("#dichTextOutput").val(result);
+            }
+        });
+    });
+}
+
+function invokeReCaptcha(ajaxFunction) {
+    grecaptcha.ready(function () {
+        grecaptcha.execute('6Lc-T-spAAAAADPtkIrHjVyGOIA0HdqAp-HEJL7m', { action: 'submit' }).then(function (token) {
+            ajaxFunction(token)
+        });
+    });
+}
