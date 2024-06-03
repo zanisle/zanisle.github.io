@@ -56,8 +56,8 @@ $(document).ready(function () {
                         processData: false,
                         contentType: false,
                         success: function (response) {
-                            var uint8Array = new TextEncoder($("#outputEncode").val()).encode(response);
-                            var blob = new Blob([uint8Array], { type: 'text/plain; charset=' + $("#outputEncode").val() });
+                            var uint8Array = new TextEncoder($("#outputEncode").attr('encode')).encode(response);
+                            var blob = new Blob([uint8Array], { type: 'text/plain; charset=' + $("#outputEncode").attr('encode') });
                             var blobURL = URL.createObjectURL(blob);
                             var a = document.createElement('a');
                             a.href = blobURL;
