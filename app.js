@@ -33,7 +33,7 @@ $(document).ready(function () {
 function translateText() {
     invokeReCaptcha((token) => {
         $.ajax({
-            url: "http://103.142.139.40/api/translate/text?text=" + $("#dichTextInput").val() + "&vietphrase="+$("#vietphrase").prop("checked")+"&viscii="+$("#viscii").prop("checked"),
+            url: "https://taigamekp.com/tlbb-api/translate/text?text=" + $("#dichTextInput").val() + "&vietphrase="+$("#vietphrase").prop("checked")+"&viscii="+$("#viscii").prop("checked"),
             type: "get",
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('X-Recaptcha-Token', token);
