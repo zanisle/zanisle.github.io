@@ -211,7 +211,7 @@ textarea.form-control {
 }
 
 .dichFile {
-    display: flex;
+    display: grid;
     gap: 10px;
     align-items: center;
 }

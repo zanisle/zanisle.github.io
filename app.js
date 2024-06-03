@@ -82,6 +82,9 @@ $(document).ready(function () {
 });
 
 function translateText() {
+    if ($("#dichTextOutput").val().trim() == '') {
+        return;
+    }
     $('.loading').show();
     invokeReCaptcha((token) => {
         $.ajax({
