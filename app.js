@@ -55,10 +55,9 @@ $(document).ready(function () {
                         data: formData,
                         processData: false,
                         contentType: false,
-                        responseType: 'blob',
                         success: function (response) {
-                            let headers = response.headers();
-                            var blob = new Blob([response.data], {type: headers['content-type']});
+                            var uint8Array = new TextEncoder($("#outputEncode").val()).encode(response);
+                            var blob = new Blob([uint8Array], { type: 'text/plain; charset=' + $("#outputEncode").val() });
                             var blobURL = URL.createObjectURL(blob);
                             var a = document.createElement('a');
                             a.href = blobURL;
