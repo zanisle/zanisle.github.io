@@ -30,12 +30,14 @@ $(document).ready(function () {
     });
 
     $("#dichFile").on("click", function () {
+        $('.loading').show();
         var fileInput = document.getElementById('inputFile');
         var file = fileInput.files[0];
         if (file) {
             var fileSize = file.size;
             var maxSizeInBytes = 350 * 1024;
             if (fileSize > maxSizeInBytes) {
+                $('.loading').hide();
                 alert('Kích thước của tệp lớn hơn 350KB.');
             } else {
                 var formData = new FormData();
@@ -63,14 +65,17 @@ $(document).ready(function () {
                             a.click();
                             document.body.removeChild(a);
                             URL.revokeObjectURL(blobURL);
+                            $('.loading').hide();
                         },
                         error: function (xhr, status, error) {
                             alert("Có lỗi xảy ra!");
+                            $('.loading').hide();
                         }
                     });
                 });
             }
         } else {
+            $('.loading').hide();
             alert('Vui lòng chọn file trước khi tiếp tục.');
         }
     });
