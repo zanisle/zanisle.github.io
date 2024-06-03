@@ -51,7 +51,19 @@
             <hr>
             <div class="dichFile">
                 <input id="inputFile" type="file" />
-                <button class="btn btn-success">Dịch File</button>
+                <label>Input encode</label>
+                <select class="form-control" id="inputEncode">
+                    <option value="UTF_8">UTF-8</option>
+                    <option value="GB18030" selected="">GB18030</option>
+                    <option value="UTF_16">UTF-16</option>
+                </select>
+                <label>Output encode</label>
+                <select class="form-control" id="outputEncode">
+                    <option value="WINDOWS-1252" selected="">Windows-1252</option>
+                    <option value="UTF_8">UTF-8</option>
+                    <option value="UTF_16">UTF-16</option>
+                </select>
+                <button class="btn btn-success" id="dichFile">Dịch File</button>
             </div>
             <hr>
             <div class="translateOption">

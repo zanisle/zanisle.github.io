@@ -28,18 +28,66 @@ $(document).ready(function () {
         $("." + $($(this).find(".nav-link")).attr("target")).show();
         localStorage.setItem("tlbb-tools-nav", $($(this).find(".nav-link")).attr("target"));
     });
+
+    $("#dichFile").on("click", function () {
+        var fileInput = document.getElementById('inputFile');
+        var file = fileInput.files[0];
+        if (file) {
+            var fileSize = file.size;
+            var maxSizeInBytes = 350 * 1024;
+            if (fileSize > maxSizeInBytes) {
+                alert('Kích thước của tệp lớn hơn 350KB.');
+            } else {
+                var formData = new FormData();
+                formData.append('file', file);
+                formData.append('comment',  $("#translateComment").prop("checked"));
+                formData.append('inputCharset', $("#inputEncode").val());
+                formData.append('outputCharset', $("#outputEncode").val());
+                invokeReCaptcha((token) => {
+                    $.ajax({
+                        url: "https://taigamekp.com/tlbb-api/translate/file",
+                        type: "post",
+                        beforeSend: function (xhr) {
+                            xhr.setRequestHeader('X-Recaptcha-Token', token);
+                        },
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (response) {
+                            var blob = new Blob([response]);
+                            var blobURL = URL.createObjectURL(blob);
+                            var a = document.createElement('a');
+                            a.href = blobURL;
+                            a.download = file.name;
+                            document.body.appendChild(a);
+                            a.click();
+                            document.body.removeChild(a);
+                            URL.revokeObjectURL(blobURL);
+                        },
+                        error: function (xhr, status, error) {
+                            alert("Có lỗi xảy ra!");
+                        }
+                    });
+                });
+            }
+        } else {
+            alert('Vui lòng chọn file trước khi tiếp tục.');
+        }
+    });
 });
 
 function translateText() {
+    $('.loading').show();
     invokeReCaptcha((token) => {
         $.ajax({
-            url: "https://taigamekp.com/tlbb-api/translate/text?text=" + $("#dichTextInput").val() + "&vietphrase="+$("#vietphrase").prop("checked")+"&viscii="+$("#viscii").prop("checked"),
+            url: "https://taigamekp.com/tlbb-api/translate/text?text=" + $("#dichTextInput").val() + "&vietphrase=" + $("#vietphrase").prop("checked") + "&viscii=" + $("#viscii").prop("checked"),
             type: "get",
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('X-Recaptcha-Token', token);
             },
             success: function (result) {
-               $("#dichTextOutput").val(result);
+                $("#dichTextOutput").val(result);
+                $('.loading').hide();
             }
         });
     });
