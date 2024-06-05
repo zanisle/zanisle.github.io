@@ -84,7 +84,7 @@ $(document).ready(function () {
 });
 
 function translateText() {
-    if ($("#dichTextOutput").val().trim() == '') {
+    if ($("#dichTextInput").val().trim() == '') {
         return;
     }
     $('.loading').show();
